@@ -1,0 +1,23 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+myenv/
+venv/
+env/
+
+# Git directory
+.git/
+
+# Editor directories and files
+.vscode/
+.idea/
+
+# Downloaded data that will be regenerated
+chrome_langchain_db/
+
+# Temporary files
+*.log
+*.tmp

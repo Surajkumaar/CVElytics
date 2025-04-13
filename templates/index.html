@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CVElytics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <header>CVElytics</header>
+
+        <div class="chat-box" id="chat-box">
+            {% for msg in chat_history %}
+                {% if msg.role == 'user' %}
+                    <div class="user-message">
+                        <div class="bubble user">{{ msg.text }}</div>
+                        <span class="time">Now</span>
+                    </div>
+                {% else %}
+                    <div class="bot-message">
+                        <div class="bubble bot">
+                            <div class="answer-content">{{ msg.text|safe }}</div>
+                            <button class="copy-btn" onclick="copyToClipboard(this)">📋</button>
+                        </div>
+                        <span class="time">Now</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <!-- Typing animation inside the chat flow -->
+            <div class="bot-message typing-indicator" id="typing" style="display: none;">
+                <div class="bubble bot">
+                    <div class="dots">
+                        <span>.</span><span>.</span><span>.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form method="POST" class="input-area" onsubmit="showTyping()">
+            <input type="text" name="question" placeholder="Ask about cybersecurity vulnerabilities..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+    function copyToClipboard(btn) {
+        const content = btn.previousElementSibling.innerText;
+        navigator.clipboard.writeText(content).then(() => {
+            btn.innerText = '✅';
+            setTimeout(() => { btn.innerText = '📋'; }, 2000);
+        });
+    }
+
+    function showTyping() {
+        const typingIndicator = document.getElementById("typing");
+        typingIndicator.style.display = "flex";
+
+        setTimeout(() => {
+            const chatBox = document.getElementById("chat-box");
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }, 100);
+    }
+    </script>
+</body>
+</html>

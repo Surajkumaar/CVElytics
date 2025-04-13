@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  cve-assistant:
+    build: .
+    ports:
+      - "7860:7860"
+    environment:
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+    volumes:
+      - ./cve.csv:/app/cve.csv
+    restart: unless-stopped
