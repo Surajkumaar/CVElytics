@@ -4,7 +4,7 @@ A cybersecurity question-answering system that uses LLMs to provide information 
 
 ## Demo
 
-[View Live Demo](https://huggingface.co/spaces/yourusername/CVElytics)
+[View Live Demo](https://huggingface.co/spaces/Surajkumaar/CVElytics)
 
 ## Screenshot
 
