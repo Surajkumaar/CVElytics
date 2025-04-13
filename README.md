@@ -31,6 +31,7 @@ CVElytics is an AI-powered cybersecurity assistant that helps users query and un
 CVElytics/
 ├── app.py                  # Main Flask application
 ├── vector.py               # Vector database and embedding setup
+├── main.py                 # Command line interface (CLI)
 ├── cve.csv                 # Dataset containing CVE information
 ├── requirements.txt        # Project dependencies
 ├── .env                    # Environment variables (API keys)
